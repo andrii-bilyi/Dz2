@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Футбольне поле</title>
+    <style>
+        /* Стилі для футбольного поля */
+        #soccerField {
+            margin: 100px auto;
+            width: 1000px;
+            height: 667px;
+            background-image: url('Field.jpg');            
+            position: relative;
+        }
+
+        /* Стилі для м'яча */
+        #soccerBall {
+            width: 124px;
+            height: 124px;            
+            background-image: url('ball.png');   
+            border-radius: 50%;
+            /* position: absolute; */
+            transition: transform 0.5s ease; /* Анімація переміщення м'яча */
+        }
+    </style>
+</head>
+<body>
+    <div id="soccerField">
+        <div id="soccerBall"></div>
+    </div>
+
+    <script>
+        // Отримуємо необхідні елементи DOM
+        const soccerField = document.getElementById("soccerField");
+        const soccerBall = document.getElementById("soccerBall");
+
+        // Додаємо обробник події кліку на полі
+        soccerField.addEventListener("click", function (event) {
+            // Отримуємо координати кліку мишкою
+            const clickX = event.clientX;
+            const clickY = event.clientY;
+
+            // Обчислюємо нові координати для м'яча
+            const ballX = clickX - soccerField.getBoundingClientRect().left - soccerBall.offsetWidth / 2;
+            const ballY = clickY - soccerField.getBoundingClientRect().top - soccerBall.offsetHeight / 2;
+
+            // Обмежуємо рух м'яча, щоб він не вилітав за межі поля
+            const maxX = soccerField.offsetWidth - soccerBall.offsetWidth;
+            const maxY = soccerField.offsetHeight - soccerBall.offsetHeight;
+
+            // Встановлюємо нові координати для м'яча з анімацією
+            soccerBall.style.transform = `translate(${Math.min(maxX, Math.max(0, ballX))}px, ${Math.min(maxY, Math.max(0, ballY))}px)`;
+        });
+    </script>
+</body>
+</html>

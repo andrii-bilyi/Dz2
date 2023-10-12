@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Світлофор</title>
+    <style>
+        /* Стилі для світлофора */
+        .edging {
+            width: 100px;
+            margin: 20px auto;
+        }
+        .traffic-light {           
+            text-align: center;            
+            border-color: black;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        .light {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        #toggleButton {
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="edging">
+        <div class="traffic-light">
+            <div class="light red"></div>
+            <div class="light yellow"></div>
+            <div class="light green"></div>        
+        </div>
+        <button id="toggleButton">Next</button>
+    </div>   
+    
+
+    <script>
+        // Отримуємо необхідні елементи DOM
+        const trafficLight = document.querySelector('.traffic-light');
+        const lights = trafficLight.querySelectorAll('.light');
+        const toggleButton = document.getElementById('toggleButton');
+        let currentLightIndex = 0;
+
+        // Функція для перемикання світлофора
+        function toggleTrafficLight() {
+            // Вимикаємо всі лампочки
+            lights.forEach(light => light.style.backgroundColor = 'gray');
+
+            // Увімкнемо наступну лампочку і оновимо індекс
+            currentLightIndex = (currentLightIndex + 1) % lights.length;
+            lights[currentLightIndex].style.backgroundColor = lights[currentLightIndex].classList[1]; // Використовуємо колір класу
+        }
+
+        // Додаємо обробник події на кнопку для перемикання світлофора
+        toggleButton.addEventListener('click', toggleTrafficLight);
+    </script>
+</body>
+</html>

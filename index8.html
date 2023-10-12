@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Змінний блок тексту</title>
+    <style>
+        /* Стилі для рамки і тексту */
+        .resizeable-container {
+            border: 2px solid #000;
+            overflow: hidden;
+            width: 30%;
+            height: 100px;
+            resize: both;
+            /* position: relative; */
+            margin: 50px auto;
+            padding: 20px;
+            background-color: bisque;
+            font-size: 22px;
+        }
+
+        .resizeable-text {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resizeable-container">
+        <div class="resizeable-text" contenteditable="true">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, at.
+        </div>
+    </div>
+
+    <script>
+        // Отримуємо необхідні елементи DOM
+        const container = document.querySelector('.resizeable-container');
+        const textBlock = document.querySelector('.resizeable-text');
+
+        // Функція для обробки подій миші
+        function handleMouseDown(event) {
+            // Отримуємо початкові координати миші та розміри блоку тексту
+            const startX = event.clientX;
+            const startY = event.clientY;
+            const startWidth = container.offsetWidth;
+            const startHeight = container.offsetHeight;
+
+            // Функція для обробки руху миші
+            function handleMouseMove(event) {
+                // Визначаємо різницю в позиції миші відносно початкової позиції
+                const deltaX = event.clientX - startX;
+                const deltaY = event.clientY - startY;
+
+                // Змінюємо розміри блоку тексту відповідно до руху миші
+                container.style.width = startWidth + deltaX + 'px';
+                container.style.height = startHeight + deltaY + 'px';
+            }
+
+            // Додаємо обробники подій для руху миші та відпускання кнопки миші
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', function() {
+                // Після відпускання кнопки миші видаляємо обробник події для руху миші
+                document.removeEventListener('mousemove', handleMouseMove);
+            });
+        }
+
+        // Додаємо обробник події для натискання кнопки миші на блок тексту
+        container.addEventListener('mousedown', handleMouseDown);
+    </script>
+</body>
+
+</html>

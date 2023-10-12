@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введення імені користувача</title>  
+    <style>
+        div{
+            width: 400px;
+            margin: 100px auto;            
+        }
+    </style>  
+</head>
+<body>
+    <div>
+        <h2>Введіть ім'я користувача:</h2>
+        <input type="text" id="usernameInput">    
+    </div>
+    
+    <script>
+        document.getElementById("usernameInput").addEventListener("input", function(event) {
+            // Отримуємо введений текст
+            let inputValue = event.target.value;
+            // Фільтруємо введені символи
+            let filteredValue = inputValue.replace(/\d/g, ''); // Видаляємо всі цифри
+            // Оновлюємо значення поля введення
+            event.target.value = filteredValue;
+        });
+    </script>
+</body>
+</html>

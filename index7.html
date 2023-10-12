@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дерево вкладених директорій</title>
+    <style>
+        div {
+            width: 500px;
+            margin: 50px auto;
+            background-color: bisque;
+            border-radius: 15px;
+            font-size: 20px;
+        }
+        ul {
+            /* list-style-type: none; */
+            padding-left: 20px;
+        }
+
+        li {
+            font-weight: normal;
+        }
+
+        li:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }   
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>This PC
+                <ul>
+                    <li>Local Disk (C:)
+                        <ul>
+                            <li>Program Files</li>
+                            <li>Users</li>
+                            <li>Windows</li>
+                        </ul>
+                    </li>
+                    <li>Local Disk (D:)
+                        <ul>
+                            <li>New Folder 1</li>
+                            <li>New Folder 2</li>
+                            <li>New Folder 3</li>
+                        </ul>
+                    </li>
+                    <li>Local Disk (E:)
+                        <ul>
+                            <li>New Folder 1</li>
+                            <li>New Folder 2</li>
+                        </ul>                    
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // Додаємо обробник подій для розгортання/згортання елементів списку
+        var listItems = document.querySelectorAll('li');
+        listItems.forEach(function (item) {
+            item.addEventListener('click', function (event) {
+                event.stopPropagation();
+                var childList = item.querySelector('ul');
+                if (childList) {
+                    childList.style.display = childList.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

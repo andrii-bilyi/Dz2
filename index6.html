@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопки з підказками</title>
+    <style>
+        #button1 {
+            margin: 0px 50px 50px 500px;
+        }
+
+        #button2 {
+            margin: 50px 50px 50px 1000px;
+        }
+
+       .tooltip-button {            
+            font-size: 22px;
+            border-radius: 5px;
+            cursor: pointer;
+       }
+
+       .tooltip-button:hover {
+            background-color: rgb(161, 243, 243);
+       }
+        /* Стилі для підказок */
+        .tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            font-size: 22px;
+            padding: 5px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="tooltip-button" id="button1" data-tooltip="Це підказка для кнопки 1">Кнопка 1</button>
+    <br>
+    <button class="tooltip-button" id="button2" data-tooltip="Це підказка для кнопки 2">Кнопка 2</button>
+    
+
+    <script>
+        // Отримуємо всі елементи з класом "tooltip-button"
+        const buttons = document.querySelectorAll('.tooltip-button');
+
+        // Додаємо обробник події для кожної кнопки
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', function () {
+                const tooltipText = button.getAttribute('data-tooltip');
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = tooltipText;
+                
+                // Визначаємо розташування підказки
+                const rect = button.getBoundingClientRect();
+                const tooltipTop = rect.top - tooltip.offsetHeight - 40; // 10 - відступ
+                if (tooltipTop > 0) {
+                    tooltip.style.top = tooltipTop + 'px';
+                } else {
+                    tooltip.style.top = rect.bottom + 2 + 'px';
+                }
+
+                tooltip.style.left = rect.left + 'px';
+                document.body.appendChild(tooltip);
+
+                // Показуємо підказку при наведенні
+                tooltip.style.display = 'block';
+
+                // Видаляємо підказку при відведенні миші
+                button.addEventListener('mouseout', function () {
+                    document.body.removeChild(tooltip);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

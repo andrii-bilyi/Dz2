@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="username">Введіть ім'я користувача:</label>
+    <input type="text" id="username" oninput="validateUsername(this)" maxlength="50" required>
+    <p id="username-error" style="color: red;"></p>
+
+    <script>
+        function validateUsername(input) {
+            const username = input.value;
+            const regex = /^[a-zA-Zа-яА-ЯіїєґІЇЄҐ' -]+$/; // Регулярний вираз для літер, пробіла та деяких спеціальних символів
+            const isValid = regex.test(username);
+
+            if (!isValid) {
+                const filteredUsername = username.replace(/[^a-zA-Zа-яА-ЯіїєґІЇЄҐ' -]+/g, ''); // Фільтрація лише літер
+                input.value = filteredUsername;
+                document.getElementById("username-error").textContent = "Будь ласка, вводьте лише літери, пробіл та деякі спеціальні символи.";
+            } else {
+                document.getElementById("username-error").textContent = "";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список книг</title>
+    <style>
+        div {
+            width: 800px;
+            margin: 50px auto;
+            background-color: bisque;
+            border-radius: 15px;
+            font-size: 20px;
+        }
+        /* Стилі для книг */
+        .book {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        /* Стилі для виділеної книги */
+        .selected {
+            background-color: orange !important;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ol>
+            <li class="book">Сто років самотності	Габріель Гарсіа Маркес	1967</li>
+            <li class="book">Кохання під час холери	Габріель Гарсіа Маркес	1985</li>
+            <li class="book">Фауст	Йоганн Вольфганг фон Гете	1832</li>
+            <li class="book">Пеппі Довгапанчоха	Астрід Ліндгрен	1945</li>
+            <li class="book">Іліада	Гомер	850-750 до н. е.</li>
+            <li class="book">Циганські романси	Федеріко Гарсіа Лорка	1928</li>
+            <li class="book">Великі сподівання	Чарльз Діккенс	1861</li>
+            <li class="book">Мобі Дік	Герман Мелвілл	1851</li>
+            <li class="book">Гаргантюа і Пантагрюель	Франсуа Рабле	1532‒1534</li>
+            <li class="book">Пригоди Гекльберрі Фінна	Марк Твен	1884</li>
+        </ol>
+    </div>
+
+    <script>
+        // Отримуємо всі елементи з класом "book"
+        const books = document.querySelectorAll('.book');
+
+        // Додаємо обробник події для кожної книги
+        books.forEach(book => {
+            book.addEventListener('click', function () {
+                // Вимикаємо виділення для всіх книг
+                books.forEach(otherBook => otherBook.classList.remove('selected'));
+                
+                // Вмикаємо виділення для поточної книги
+                book.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

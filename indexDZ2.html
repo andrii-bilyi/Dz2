@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТЕМА: Обробка подій</title>
+    <link rel="stylesheet" href="style.css">    
+</head>
+<body>
+    <div>
+        <h1>ТЕМА: Обробка подій</h1>
+        <button id="openButton1">Завдання 1</button>
+        <button id="openButton2">Завдання 2</button>
+        <button id="openButton3">Завдання 3</button>
+        <button id="openButton4">Завдання 4</button>
+        <button id="openButton5">Завдання 5</button>
+        <button id="openButton6">Завдання 6</button>
+        <button id="openButton7">Завдання 7</button>
+        <button id="openButton8">Завдання 8</button>
+    </div>
+    
+    
+    <script>
+        function openDocument(documentName) {
+            window.open(documentName, "_blank");
+        }
+
+        var button1 = document.getElementById("openButton1");
+        var button2 = document.getElementById("openButton2");
+        var button3 = document.getElementById("openButton3");
+        var button4 = document.getElementById("openButton4");
+        var button5 = document.getElementById("openButton5");
+        var button6 = document.getElementById("openButton6");
+        var button7 = document.getElementById("openButton7");
+        var button8 = document.getElementById("openButton8");
+
+        button1.addEventListener("click", function() {
+            openDocument("index1.html");
+        });
+
+        button2.addEventListener("click", function() {
+            openDocument("index2.html");
+        });
+
+        button3.addEventListener("click", function() {
+            openDocument("index3.html");
+        });
+
+        button4.addEventListener("click", function() {
+            openDocument("index4.html");
+        });
+
+        button5.addEventListener("click", function() {
+            openDocument("index5.html");
+        });
+
+        button6.addEventListener("click", function() {
+            openDocument("index6.html");
+        });
+
+        button7.addEventListener("click", function() {
+            openDocument("index7.html");
+        });
+
+        button8.addEventListener("click", function() {
+            openDocument("index8.html");
+        });
+
+    </script>
+
+    <!-- <button id="openButton1">Открыть Документ 1</button>
+    <button id="openButton2">Открыть Документ 2</button>
+    <button id="openButton3">Открыть Документ 3</button>
+    <button id="openButton4">Открыть Документ 4</button>
+    <button id="openButton5">Открыть Документ 5</button>
+    <button id="openButton6">Открыть Документ 6</button>
+    <button id="openButton7">Открыть Документ 7</button>
+    <button id="openButton8">Открыть Документ 8</button>
+    
+    <script>
+        function openDocument(documentNumber) {
+            // Функция для открытия соответствующего HTML-документа
+            window.open("index" + documentNumber + ".html", "_blank");
+        }
+
+        for (var i = 1; i <= 8; i++) {
+            var button = document.getElementById("openButton" + i);
+            button.addEventListener("click", function() {
+                // Используем замыкание для передачи значения i внутрь функции
+                var documentNumber = i;
+                return function() {
+                    openDocument(documentNumber);
+                };
+            }());
+        }
+    </script> -->
+</body>
+</html>

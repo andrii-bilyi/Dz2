@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #d2cbbe;    
+    font-family:Verdana, Geneva, Tahoma, sans-serif;   
+}
+
+div{
+    width: 90%;
+    border-radius: 10px;
+    background-color: #fff;
+    max-width: 1000px;
+    margin: 15px auto;
+    padding: 20px 20px 50px 20px;
+    text-align: center;
+}
+
+h1{
+    text-align: center;    
+    max-width: 90%;
+    margin: 30px;
+}
+
+button {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border-radius: 10px; /* Закругление углов */
+    background-color: #3498db; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    font-size: 18px; /* Размер шрифта текста */
+    cursor: pointer; /* Изменение курсора при наведении */
+}
+
+button:hover{
+    background-color: #226998;
+}
+
